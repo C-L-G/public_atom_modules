@@ -24,7 +24,7 @@ reg	[DSIZE-1:0]		ltc		[LAT-1:0];
 
 generate
 if(LAT > 0)begin
-always@(posedge clk,negedge rst_n)begin:GEN_LAT
+always@(posedge clk/*,negedge rst_n*/)begin:GEN_LAT
 integer II;
 	if(~rst_n)begin
 		for(II=0;II<LAT;II=II+1)

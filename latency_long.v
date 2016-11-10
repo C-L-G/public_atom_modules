@@ -39,7 +39,7 @@ localparam	DSIZE	= 	(LAT<=64)? 6 : (LAT<=128)? 7 : (LAT<=256)? 8 :
 reg [DSIZE-1:0]	fedge_cnt;
 reg [DSIZE-1:0]	redge_cnt;
 
-always@(posedge clock,negedge rst_n)begin
+always@(posedge clock/*,negedge rst_n*/)begin
 	if(~rst_n)	fedge_cnt	<= {DSIZE{1'b0}};
 	else begin
 		if(fedge_cnt == {DSIZE{1'b0}})begin
@@ -52,7 +52,7 @@ always@(posedge clock,negedge rst_n)begin
 			else	fedge_cnt	<= fedge_cnt + 1'd1;
 end end end
 
-always@(posedge clock,negedge rst_n)begin
+always@(posedge clock/*,negedge rst_n*/)begin
 	if(~rst_n)	redge_cnt	<= {DSIZE{1'b0}};
 	else begin
 		if(redge_cnt == {DSIZE{1'b0}})begin
@@ -67,7 +67,7 @@ end end end
 
 reg	q_reg;
 
-always@(posedge clock,negedge rst_n)begin
+always@(posedge clock/*,negedge rst_n*/)begin
 	if(~rst_n)	q_reg	<= 1'b0;
 	else if(fedge_cnt == PLAT)
 				q_reg	<= 1'b0;

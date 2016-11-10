@@ -23,7 +23,7 @@ reg		in_d1;
 reg		raising_reg;
 reg		falling_reg;
 
-always@(posedge clk,negedge rst_n)begin
+always@(posedge clk/*,negedge rst_n*/)begin
 	if(~rst_n)begin
 		in_d0      	 <= 1'b0;    
         in_d1        <= 1'b0;   

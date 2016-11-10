@@ -41,7 +41,7 @@ reg					data_vld;
 reg[DSIZE-1:0]		data_reg;  
 reg					reload_reg;
 
-always@(posedge clock,negedge rst_n)
+always@(posedge clock/*,negedge rst_n*/)
 	if(~rst_n)	data_vld	<= 1'b0;
 	else 
 		case({wr_en,data_vld,low_empty})
@@ -53,7 +53,7 @@ always@(posedge clock,negedge rst_n)
 		default:data_vld	<= 1'b0;
 		endcase
 
-always@(posedge clock,negedge rst_n)
+always@(posedge clock/*,negedge rst_n*/)
 	if(~rst_n)	reload_reg	<= 1'b0;
 	else 
 		case({wr_en,data_vld,low_empty})
@@ -68,7 +68,7 @@ always@(posedge clock,negedge rst_n)
 		default:reload_reg	<= 1'b0;
 		endcase
 
-always@(posedge clock,negedge rst_n)
+always@(posedge clock/*,negedge rst_n*/)
 	if(~rst_n)	data_reg	<= {DSIZE{1'b0}};
 	else 
 		case({wr_en,data_vld,low_empty})

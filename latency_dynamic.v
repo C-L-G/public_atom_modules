@@ -40,7 +40,7 @@ edge_generator #(
 reg [LSIZE-1:0]	fedge_cnt;
 reg [LSIZE-1:0]	redge_cnt;
 
-always@(posedge clock,negedge rst_n)begin
+always@(posedge clock/*,negedge rst_n*/)begin
 	if(~rst_n)	fedge_cnt	<= {LSIZE{1'b0}};
 	else begin
 		if(fedge_cnt == {LSIZE{1'b0}})begin
@@ -53,7 +53,7 @@ always@(posedge clock,negedge rst_n)begin
 			else	fedge_cnt	<= fedge_cnt + 1'd1;
 end end end
 
-always@(posedge clock,negedge rst_n)begin
+always@(posedge clock/*,negedge rst_n*/)begin
 	if(~rst_n)	redge_cnt	<= {LSIZE{1'b0}};
 	else begin
 		if(redge_cnt == {LSIZE{1'b0}})begin
@@ -68,7 +68,7 @@ end end end
 
 reg	q_reg;
 
-always@(posedge clock,negedge rst_n)begin
+always@(posedge clock/*,negedge rst_n*/)begin
 	if(~rst_n)	q_reg	<= 1'b0;
 	else if(fedge_cnt == lat-1'b1)
 				q_reg	<= 1'b0;

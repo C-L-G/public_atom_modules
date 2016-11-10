@@ -32,7 +32,7 @@ assign	carry_bit	= (DSIZE>(CSIZE+OSIZE))? indata[DSIZE-1-CSIZE-OSIZE] : 1'b0;
 
 assign	cm_result	= (indata[DSIZE-1-:CSIZE] == {CSIZE{1'b0}})? indata[DSIZE-1-CSIZE-:OSIZE]+carry_bit : {OSIZE{1'b1}};
 
-always@(posedge clock,negedge rst_n)
+always@(posedge clock/*,negedge rst_n*/)
     if(~rst_n)  result  <= {OSIZE{1'b0}};
     else        result	<= cm_result;
 
